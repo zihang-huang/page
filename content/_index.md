@@ -4,6 +4,10 @@ description = 'Explore the personal website of Ermaolaoye, Zihang Huang: an engi
 keywords = ['Ermaolaoye', 'Zihang Huang', 'engineer', 'gamer', 'creative technology', 'digital experiences']
 
 [[links]]
+label = 'LinkedIn'
+url = 'https://www.linkedin.com/in/zihang-huang-565737196/'
+
+[[links]]
 label = 'GitHub'
 url = 'https://github.com/zihang-huang'
 
