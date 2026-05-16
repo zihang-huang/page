@@ -1,0 +1,27 @@
+{{ define "main" }}
+<main id="content" class="home-shell">
+  <section class="hero" aria-labelledby="home-title"{{ with .Params.kicker }} data-mark="{{ . }}"{{ end }}>
+    {{ with .Params.kicker }}
+      <p class="eyebrow">{{ . }}</p>
+    {{ end }}
+    <h1 id="home-title">
+      {{ range split .Title "," }}
+        <span>{{ strings.TrimSpace . }}</span>
+      {{ end }}
+    </h1>
+
+    {{ range .Params.details }}
+      <section class="statement" aria-label="{{ .heading }}">
+        <p class="section-label">{{ .heading }}</p>
+        <p>{{ .body }}</p>
+      </section>
+    {{ end }}
+  </section>
+
+  <nav class="link-row" aria-label="Personal links">
+    {{ range .Params.links }}
+      <a href="{{ .url }}" rel="me noopener" target="_blank">{{ .label }}</a>
+    {{ end }}
+  </nav>
+</main>
+{{ end }}

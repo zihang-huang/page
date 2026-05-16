@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="{{ site.Language.Locale | default "en" }}">
+  <head>
+    {{ $title := cond .IsHome site.Title (printf "%s | %s" .Title site.Title) }}
+    {{ $description := .Description | default .Params.description | default site.Params.description }}
+    {{ $keywords := .Params.keywords | default site.Params.keywords }}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ $title }}</title>
+    <meta name="description" content="{{ $description }}">
+    {{ with $keywords }}<meta name="keywords" content="{{ delimit . ", " }}">{{ end }}
+    {{ with site.Params.author }}<meta name="author" content="{{ . }}">{{ end }}
+    <link rel="canonical" href="{{ .Permalink }}">
+    <meta property="og:title" content="{{ $title }}">
+    <meta property="og:description" content="{{ $description }}">
+    <meta property="og:type" content="{{ if .IsHome }}website{{ else }}article{{ end }}">
+    <meta property="og:url" content="{{ .Permalink }}">
+    <meta property="og:site_name" content="{{ site.Title }}">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{{ $title }}">
+    <meta name="twitter:description" content="{{ $description }}">
+    {{ $style := resources.Get "css/main.css" | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $style.RelPermalink }}">
+    {{ with resources.Get "js/shader.js" }}
+      {{ $script := . | js.Build | minify | fingerprint }}
+      <script src="{{ $script.RelPermalink }}" defer></script>
+    {{ end }}
+  </head>
+  <body>
+    {{ block "main" . }}{{ end }}
+  </body>
+</html>

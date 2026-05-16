@@ -1,0 +1,10 @@
+baseURL = 'https://example.org/'
+locale = 'en-us'
+title = 'Ermaolaoye | Zihang Huang'
+
+disableKinds = ['taxonomy', 'term', 'RSS']
+
+[params]
+  author = 'Zihang Huang'
+  description = 'Personal website of Ermaolaoye, Zihang Huang: engineer, gamer, and creator exploring technology, interactive systems, and enduring digital experiences.'
+  keywords = ['Ermaolaoye', 'Zihang Huang', 'engineer', 'gamer', 'creative technology', 'interactive systems', 'personal website']
